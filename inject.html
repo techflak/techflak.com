@@ -1,0 +1,33 @@
+<script type="text/javascript">
+    function setup() {
+        var commentsEl = document.getElementsByClassName("post-comments")[0];
+        if (commentsEl) {
+            var localTheme = localStorage.getItem('attila_theme') === 'dark' ? 'dark' : 'light';
+            commentsEl.innerHTML = "";
+            var scriptTag = document.createElement("script");
+            scriptTag.setAttribute("src", "https://utteranc.es/client.js");
+            scriptTag.setAttribute("repo", "xalisys/techflak.com");
+            scriptTag.setAttribute("issue-term", 'pathname');
+            scriptTag.setAttribute("theme", "github-" + localTheme);
+            scriptTag.setAttribute("crossorigin", "anonymous");
+            scriptTag.setAttribute("async", true);
+            commentsEl.prepend(scriptTag);
+        }
+    }
+    setTimeout(setup, 0);
+
+    $(document).ready(function () {
+        $('.post-comments').css({
+            'display': 'block'
+        });
+    });
+</script>
+<style>
+    .post-comments {
+        padding: 0 !important;
+    }
+
+    .utterances {
+        max-width: unset !important;
+    }
+</style>
